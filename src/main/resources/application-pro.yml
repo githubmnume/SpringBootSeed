@@ -1,0 +1,31 @@
+server:
+  port: 8768
+
+spring:
+  application:
+    name: interview-service
+  datasource:
+    url: 'jdbc:mysql://10.80.41.202:3306/mycv?verifyServerCertificate=false&useSSL=true'
+    username: cvmngr
+    password: cvmngr_P@ss
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: 'org.hibernate.dialect.MySQL5Dialect'
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+eureka:
+  client:
+      serviceUrl:
+        defaultZone: http://10.80.41.202:8760/eureka
+
+security:
+  oauth2:
+    resource:
+      filter-order: 3

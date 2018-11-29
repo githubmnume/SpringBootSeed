@@ -1,0 +1,65 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: interview-service
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/mycv?verifyServerCertificate=false&useSSL=true'
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: 'org.hibernate.dialect.MySQL5Dialect'
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+info:
+   app:
+      name: interview
+      version: 0.0.1
+#management:
+#  security:
+#    enable: false #关掉安全认证
+#    port: 8088 #管理端口调整成8088
+#    context-path: /monitor #actuator的访问路径
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    beans:
+      enabled: true
+    metrics:
+      enabled: true
+    auditevents:
+      enabled: true
+    httptrace:
+      enabled: true
+    threaddump:
+      enabled: true
+  trace:
+    http:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include:
+        - "*" 
+  
+    
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8760/eureka
+#
+#security:
+#  oauth2:
+#    resource:
+#      filter-order: 3
